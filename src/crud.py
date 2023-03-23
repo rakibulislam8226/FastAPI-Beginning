@@ -19,7 +19,7 @@ def get_session():
 
 
 @app.get("/")
-def getItems(session: Session = Depends(get_session)):
+def getItems(session=Depends(get_session)):
     items = session.query(models.Item).all()
     return items
 
@@ -34,7 +34,7 @@ async def addItem(item: schemas.Item, session=Depends(get_session)):
 
 
 @app.get("/{id}")
-async def getItem(id: int, session: Session = Depends(get_session)):
+async def getItem(id: int, session=Depends(get_session)):
     item = session.query(models.Item).get(id)
     return item
 
