@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  # db:
+  #   image: postgres:12-alpine
+  #   container_name: fastapiapp_demodb
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_DB=postgres
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #   networks:
+  #     - fastapiappnetwork
+
+  app:
+    image: fastapiapp
+    container_name: fastapiapp_demoapp
+    ports:
+      - 8001:8001
+    volumes:
+      - .:/home
+    # depends_on:
+    #   - db
+    networks:
+      - fastapiappnetwork
+
+networks:
+  fastapiappnetwork:
